@@ -1,0 +1,16 @@
+import Foundation
+
+print("Por favor, ingresa un número entero:")
+
+if let entrada = readLine(), let numero = Int(entrada) {
+    
+    if numero % 2 == 0 {
+        print("El número \(numero) es PAR.")
+    } else {
+      
+        print("El número \(numero) es IMPAR.")
+    }
+    
+} else {
+    print("Error: No ingresaste un número entero válido.")
+}
