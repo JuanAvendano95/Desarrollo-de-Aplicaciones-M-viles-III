@@ -1,0 +1,56 @@
+import Foundation
+struct Articulo {
+    var nombre: String
+    var cantidad: Int
+}
+var inventario: [Articulo] = []
+var ejecutando = true
+
+while ejecutando {
+    print("\nMENU")
+    print("1. Registrar articulos.")
+    print("2. Ver lista de articulos.")
+    print("3. Consultar articulos en existencias.")
+    print("4. Salir.")
+    print("Elige una opcion (numero):")
+    
+    if let opcion = readLine() {
+        switch opcion {
+        case "1":
+            print("\n1. Registrar articulo")
+            print("Por favor escriba la cantidad de articulos que desea ingresar")
+            
+            if let cantidadStr = readLine(), let cantidadAingresar = Int(cantidadStr) {
+                for _ in 1...cantidadAingresar {
+                    print("\nRegistro de articulos")
+                    print("Ingrese el nombre del articulo, posteriormente presione enter:")
+                    let nombreArticulo = readLine() ?? "Sin nombre"
+                    
+                    print("Ingrese la cantidad de este articulo:")
+                    let cantidadArticulo = Int(readLine() ?? "0") ?? 0
+                    
+                    inventario.append(Articulo(nombre: nombreArticulo, cantidad: cantidadArticulo))
+                }
+            }
+        case "2":
+            print("\n2. Ver lista de articulos.")
+            print("Listado de productos")
+            for (index, articulo) in inventario.enumerated() {
+                print("Articulo \(index + 1) \(articulo.nombre)")
+                print("Cantidad \(index + 1) \(articulo.cantidad)")
+            }
+            
+        case "3":
+            print("\n3. Consultar articulos en existencias.")
+            for (index, articulo) in inventario.enumerated() {
+                print("Articulo \(index + 1): \(articulo.nombre)")
+                print("Cantidad \(index + 1): \(articulo.cantidad)")
+            }
+        case "4":
+            print("\nSaliendo...")
+            ejecutando = false
+        default:
+            print("\nOpción no válida. Intente de nuevo.")
+        }
+    }
+}
